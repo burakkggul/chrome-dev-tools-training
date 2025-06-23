@@ -1,7 +1,7 @@
 # Chrome DevTools Eğitim Dokümanı
 
 ## 🎯 Amaç
-Bu döküman, test mühendislerinin **Chrome DevTools**'u etkin bir şekilde kullanabilmeleri için hazırlanmıştır. Manuel ve otomasyon testlerinde hata ayıklamak, performans analizi yapmak ve element incelemek için temel ve ileri düzey bilgileri içerir.
+Bu döküman, **Chrome DevTools**'u etkin bir şekilde kullanabilmeleri için hazırlanmıştır. Geliştirme esnası ve sonrasında nanuel ve otomasyon testlerinde hata ayıklamak, performans analizi yapmak ve element incelemek için temel ve ileri düzey bilgileri içerir.
 
 ---
 
@@ -263,7 +263,7 @@ console.groupEnd()
 
 ---
 
-## 🔎 Test Mühendisleri İçin Pratik Senaryolar
+## 🔎 Chrome Dev Tools İçin Pratik Senaryolar
 
 ### Manuel Test
 - ✅ Element locator (XPath/CSS selector) doğrulama
@@ -324,7 +324,11 @@ if (document.getElementById('myButton')) {
 - [DevTools Tips](https://devtoolstips.org/)
 
 ### Pratik Kaynaklar
-- [Chrome Dev Tools](https://developer.chrome.com/docs/devtools)
+
+Aşağıdaki site, Chrome DevTools üzerinden **Network**, **Console**, **Security** gibi panelleri kullanarak hata tespiti yapma pratiği için idealdir.
+
+- 🌐 [training.devtools.burakgul.com.tr](https://training.devtools.burakgul.com.tr/)
+---
 
 ### Video Eğitimler
 - [Chrome for Developers YouTube Kanalı] (https://www.youtube.com/@ChromeDevs)
@@ -341,6 +345,6 @@ if (document.getElementById('myButton')) {
 
 ---
 
-> 💡 **Pro Tip:** DevTools'u günlük test rutininizin bir parçası haline getirin. Her test senaryosunda Network ve Console panellerini açık tutmak, proaktif hata tespiti yapmanızı sağlar.
+> 💡 **Pro Tip:** DevTools'u her geliştirici ve test mühendisi günlük test rutininin bir parçası haline getirmelidir. Her test senaryosunda Network ve Console panellerini açık tutmak, proaktif hata tespiti yapmanızı sağlar.
 
-> 🧠 **Hatırlatma:** DevTools, test mühendislerinin sadece hata yakalamak değil, test öncesi analiz yapmalarını da sağlar. Düzenli kullanımı, hata çözüm süresini ciddi oranda azaltır ve test kalitesini artırır.
+> 🧠 **Hatırlatma:** DevTools, geliştirici ve test mühendislerinin sadece hata yakalamak değil, test öncesi analiz yapmalarını da sağlar. Düzenli kullanımı, hata çözüm süresini ciddi oranda azaltır ve test kalitesini artırır.

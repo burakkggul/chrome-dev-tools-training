@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chrome DevTools - Eğitim Sayfası</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
+
+    .section {
+      margin: 20px 0;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      border-left: 4px solid #ff6b6b;
+    }
+
+    button {
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #ff5252;
+      transform: translateY(-2px);
+    }
+
+    input,
+    select {
+      padding: 8px;
+      margin: 5px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .error-log {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      border-radius: 5px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      max-height: 200px;
+      overflow-y: auto;
+      margin-top: 10px;
+    }
+
+    .warning {
+      color: #ffd54f;
+    }
+
+    .error {
+      color: #f44336;
+    }
+  </style>
+  <!-- Olmayan CSS dosyası - 404 hatası -->
+  <link rel="stylesheet" href="nonexistent-style.css">
+  <!-- Olmayan JavaScript dosyası - 404 hatası -->
+  <script src="missing-script.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🐛 Console Hataları Test Sayfası</h1>
+    <p>Bu sayfa eğitim amaçlı olarak hazırlanmıştır. Console'u açın (F12) ve hataları inceleyin!</p>
+
+    <div class="section">
+      <h3>📋 Hata Kategorileri</h3>
+      <ul>
+        <li>Syntax Errors (Sözdizimi Hataları)</li>
+        <li>Reference Errors (Referans Hataları)</li>
+        <li>Type Errors (Tip Hataları)</li>
+        <li>Network Errors (Ağ Hataları)</li>
+        <li>CORS Errors (Cross-Origin Hataları)</li>
+        <li>Console Warnings (Uyarılar)</li>
+        <li>Performance Issues (Performans Sorunları)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>🔴 Hata Tetikleme Butonları</h3>
+      <button onclick="triggerReferenceError()">Reference Error</button>
+      <button onclick="triggerTypeError()">Type Error</button>
+      <button onclick="triggerSyntaxError()">Syntax Error</button>
+      <button onclick="triggerNetworkError()">Network Error</button>
+      <button onclick="triggerCorsError()">CORS Error</button>
+      <button onclick="triggerUncaughtException()">Uncaught Exception</button>
+      <button onclick="triggerInfiniteLoop()">Infinite Loop Warning</button>
+      <button onclick="triggerMemoryLeak()">Memory Leak</button>
+    </div>
+
+    <div class="section">
+      <h3>📝 Form Hataları</h3>
+      <form id="buggyForm">
+        <input type="text" id="username" placeholder="Kullanıcı Adı" required>
+        <input type="email" id="email" placeholder="E-posta" required>
+        <input type="password" id="password" placeholder="Şifre" required>
+        <select id="country">
+          <option value="">Ülke Seçin</option>
+          <option value="tr">Türkiye</option>
+          <option value="us">ABD</option>
+        </select>
+        <button type="submit">Gönder</button>
+      </form>
+    </div>
+
+    <div class="section">
+      <h3>🖼️ Medya Hataları</h3>
+      <!-- Olmayan resim - 404 hatası -->
+      <img src="nonexistent-image.jpg" alt="Bulunamayan Resim"
+        onerror="console.error('Resim yüklenemedi: nonexistent-image.jpg')">
+
+      <!-- Olmayan video - 404 hatası -->
+      <video controls>
+        <source src="missing-video.mp4" type="video/mp4">
+        Tarayıcınız video etiketini desteklemiyor.
+      </video>
+    </div>
+
+    <div class="section">
+      <h3>⚡ Performance Test</h3>
+      <button onclick="performanceTest()">Performans Testi Çalıştır</button>
+      <div id="performanceResult"></div>
+    </div>
+
+    <div class="section">
+      <h3>📊 Console Log Örnekleri</h3>
+      <button onclick="showConsoleLogs()">Console Log'ları Göster</button>
+      <div class="error-log" id="logDisplay"></div>
+    </div>
+  </div>
+
+  <script>
+    // Sayfa yüklendiğinde otomatik hatalar
+    console.log("🚀 Test sayfası yüklendi");
+
+    // 1. Reference Error - Tanımlanmamış değişken
+    try {
+      console.log(undefinedVariable);
+    } catch (e) {
+      console.error("Reference Error:", e.message);
+    }
+
+    // 2. Type Error - Null üzerinde method çağırma
+    try {
+      let nullValue = null;
+      nullValue.toString();
+    } catch (e) {
+      console.error("Type Error:", e.message);
+    }
+
+    // 3. Syntax Error - Eval ile
+    try {
+      eval('function test( { console.log("syntax error"); }');
+    } catch (e) {
+      console.error("Syntax Error:", e.message);
+    }
+
+    // 4. Network Error fonksiyonları
+    function triggerReferenceError() {
+      try {
+        console.log(nonExistentVariable);
+      } catch (e) {
+        console.error("🔴 Reference Error tetiklendi:", e.message);
+      }
+    }
+
+    function triggerTypeError() {
+      try {
+        let obj = null;
+        obj.someMethod();
+      } catch (e) {
+        console.error("🔴 Type Error tetiklendi:", e.message);
+      }
+    }
+
+    function triggerSyntaxError() {
+      try {
+        eval('for(let i=0 i<10; i++) { console.log(i); }');
+      } catch (e) {
+        console.error("🔴 Syntax Error tetiklendi:", e.message);
+      }
+    }
+
+    function triggerNetworkError() {
+      fetch('https://nonexistent-api-endpoint.com/data')
+        .then(response => response.json())
+        .catch(error => {
+          console.error("🔴 Network Error:", error.message);
+        });
+    }
+
+    function triggerCorsError() {
+      fetch('https://httpbin.org/status/403')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('CORS Error: ' + response.status);
+          }
+          return response.text();
+        })
+        .catch(error => {
+          console.error("🔴 CORS Error:", error.message);
+        });
+    }
+
+    function triggerUncaughtException() {
+      setTimeout(() => {
+        throw new Error("Bu bir yakalanmamış hata örneğidir!");
+      }, 100);
+    }
+
+    let infiniteLoopWarning = false;
+    function triggerInfiniteLoop() {
+      if (!infiniteLoopWarning) {
+        console.warn("⚠️ Sonsuz döngü uyarısı: Dikkatli olun!");
+        infiniteLoopWarning = true;
+
+        // Kontrollü "sonsuz" döngü
+        let count = 0;
+        let interval = setInterval(() => {
+          count++;
+          console.log("Döngü iterasyonu:", count);
+          if (count > 10) {
+            clearInterval(interval);
+            console.warn("⚠️ Döngü güvenlik nedeniyle durduruldu");
+          }
+        }, 100);
+      }
+    }
+
+    let memoryLeakArray = [];
+    function triggerMemoryLeak() {
+      console.warn("⚠️ Memory leak simülasyonu başlatıldı");
+      for (let i = 0; i < 10000; i++) {
+        memoryLeakArray.push(new Array(1000).fill('memory leak data'));
+      }
+      console.warn("⚠️ Bellek kullanımı arttı, dikkat edin!");
+    }
+
+    function performanceTest() {
+      console.time("Performance Test");
+
+      // Ağır hesaplama
+      let result = 0;
+      for (let i = 0; i < 1000000; i++) {
+        result += Math.random();
+      }
+
+      console.timeEnd("Performance Test");
+      console.warn("⚠️ Ağır hesaplama tamamlandı");
+
+      document.getElementById('performanceResult').innerHTML =
+        `<p style="color: #ffd54f;">Hesaplama sonucu: ${result.toFixed(2)}</p>`;
+    }
+
+    function showConsoleLogs() {
+      const logDisplay = document.getElementById('logDisplay');
+
+      // Farklı console metodları örneği
+      console.log("📝 Normal log mesajı");
+      console.info("ℹ️ Bilgi mesajı");
+      console.warn("⚠️ Uyarı mesajı");
+      console.error("❌ Hata mesajı");
+      console.debug("🐛 Debug mesajı");
+
+      // Console table örneği
+      console.table([
+        { isim: "Ali", yaş: 25, şehir: "İstanbul" },
+        { isim: "Ayşe", yaş: 30, şehir: "Ankara" },
+        { isim: "Mehmet", yaş: 35, şehir: "İzmir" }
+      ]);
+
+      // Console group örneği
+      console.group("👥 Kullanıcı Bilgileri");
+      console.log("Kullanıcı ID: 12345");
+      console.log("Kullanıcı Rolü: Admin");
+      console.groupEnd();
+
+      logDisplay.innerHTML = `
+                <div class="warning">⚠️ Console'da farklı log türlerini inceleyin!</div>
+                <div class="error">❌ Hata mesajları kırmızı renkte görünür</div>
+                <div>📝 Normal mesajlar beyaz/siyah renkte</div>
+                <div class="warning">ℹ️ Bilgi mesajları mavi renkte</div>
+            `;
+    }
+
+    // Form hataları
+    document.getElementById('buggyForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      try {
+        // Kasıtlı hata
+        let formData = new FormData(this);
+        let invalidField = formData.get('nonexistentField');
+        invalidField.trim(); // Bu null üzerinde method çağıracak
+      } catch (error) {
+        console.error("🔴 Form işleme hatası:", error.message);
+      }
+
+      console.warn("⚠️ Form gönderildi ama işlenmedi (test amaçlı)");
+    });
+
+    // Window error handler
+    window.addEventListener('error', function (e) {
+      console.error("🔴 Global Error Handler:", {
+        message: e.message,
+        filename: e.filename,
+        lineno: e.lineno,
+        colno: e.colno,
+        error: e.error
+      });
+    });
+
+    // Unhandled promise rejection
+    window.addEventListener('unhandledrejection', function (e) {
+      console.error("🔴 Unhandled Promise Rejection:", e.reason);
+    });
+
+    // Sayfa yüklendiğinde otomatik bazı hatalar
+    setTimeout(() => {
+      console.warn("⚠️ 3 seconds later: Delayed warning message");
+    }, 3000);
+
+    // Console clear engelleme
+    let originalClear = console.clear;
+    console.clear = function () {
+      console.log("🚫 Console.clear() engellendi - Test amaçlı!");
+    };
+
+    // Sayfa kapanırken
+    window.addEventListener('beforeunload', function (e) {
+      console.log("👋 Sayfa kapatılıyor...");
+    });
+
+    console.log("🎯 Toplam beklenen hata sayısı: 15+ farklı hata türü");
+    console.log("📖 Eğitim için hazırlanmıştır - Tüm hatalar kasıtlıdır!");
+  </script>
+
+  <!-- Sayfa sonunda da bir olmayan script -->
+  <script src="another-missing-file.js"></script>
+</body>
+
+</html>
