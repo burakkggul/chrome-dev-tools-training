@@ -1,9 +1,14 @@
 # Chrome DevTools Eğitim Dokümanı
 
+## Lisans
+Bu proje GPLv3 lisans ile lisanslanmıştır. Detaylar için [LICENSE](./LICENSE) dosyasını inceleyebilirsiniz.
+
 ## 🎯 Amaç
 Bu döküman, **Chrome DevTools**'un etkin bir şekilde kullanabilmesi için hazırlanmıştır. Geliştirme esnası ve sonrasında nanuel ve otomasyon testlerinde hata ayıklamak, performans analizi yapmak ve element incelemek için temel ve ileri düzey bilgileri içerir.
 
 ---
+
+> 💡 [training.devtools.burakgul.com.tr](https://training.devtools.burakgul.com.tr/) adresini daha efektif kullanabilmek için [index.html dokümantasyonunu](./INDEX_HTML_DOCUMENTATION.md) inceleyebilirsiniz.
 
 ## 🧭 DevTools'a Giriş
 
