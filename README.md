@@ -1,7 +1,7 @@
 # Chrome DevTools Eğitim Dokümanı
 
 ## 🎯 Amaç
-Bu döküman, **Chrome DevTools**'u etkin bir şekilde kullanabilmeleri için hazırlanmıştır. Geliştirme esnası ve sonrasında nanuel ve otomasyon testlerinde hata ayıklamak, performans analizi yapmak ve element incelemek için temel ve ileri düzey bilgileri içerir.
+Bu döküman, **Chrome DevTools**'un etkin bir şekilde kullanabilmesi için hazırlanmıştır. Geliştirme esnası ve sonrasında nanuel ve otomasyon testlerinde hata ayıklamak, performans analizi yapmak ve element incelemek için temel ve ileri düzey bilgileri içerir.
 
 ---
 
