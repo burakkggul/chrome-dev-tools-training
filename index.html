@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Chrome DevTools - Eğitim</title>
   <style>
     * {
@@ -574,13 +575,13 @@
         <!-- Mixed content examples -->
         <div style="margin: 20px 0;">
           <h5>Mixed Content Examples:</h5>
-          <img src="http://via.placeholder.com/100x100" alt="Insecure image"
+          <img src="http://insecure-cdn.burakgul.com.tr/100x100.png" alt="Insecure image"
             onerror="console.error('Mixed content blocked')">
           <script>
             // Try to load insecure script
             try {
               let script = document.createElement('script');
-              script.src = 'http://insecure-cdn.com/script.js';
+              script.src = 'http://insecure-cdn.burakgul.com.tr/script.js';
               document.head.appendChild(script);
             } catch (e) {
               console.error('Mixed content script blocked:', e);
@@ -933,7 +934,7 @@ function loadLargeFile() {
 
 
     function triggerCORSError() {
-      fetch('https://cors-test.org/test')
+      fetch('https://training.devtools.burakgul.com.tr/cors-test')
         .then(response => response.text())
         .catch(error => {
           console.error("🚫 CORS Error:", error.message);
@@ -944,7 +945,7 @@ function loadLargeFile() {
     function triggerMixedContent() {
       // Try to load HTTP content on HTTPS page
       const img = document.createElement('img');
-      img.src = 'http://via.placeholder.com/100x100';
+      img.src = 'http://insecure-cdn.burakgul.com.tr/100x100.png';
       img.onerror = () => {
         console.error("🔒 Mixed Content blocked");
         updateNetworkResults("Mixed Content warning - HTTP on HTTPS");
@@ -1246,9 +1247,7 @@ function loadLargeFile() {
     function testMixedContent() {
       // Try to load HTTP resources on HTTPS
       const resources = [
-        'http://example.com/image.jpg',
-        'http://insecure-api.com/data.json',
-        'http://cdn.example.com/script.js'
+        'http://insecure-cdn.burakgul.com.tr/data.json',
       ];
 
       resources.forEach(url => {
@@ -1263,8 +1262,7 @@ function loadLargeFile() {
     function testInsecureRequest() {
       // Simulate insecure requests
       const insecureUrls = [
-        'http://httpbin.burakgul.com.tr/get',
-        'http://jsonplaceholder.typicode.com/posts/1'
+        'http://insecure-cdn.burakgul.com.tr/get',
       ];
 
       insecureUrls.forEach(url => {
@@ -1283,6 +1281,8 @@ function loadLargeFile() {
         const script = document.createElement('script');
         script.innerHTML = 'console.log("Inline script executed");';
         document.head.appendChild(script);
+        //emulate csp error
+        console.error("Refused to execute inline event handler because it violates the following Content Security Policy directive: \"script-src 'self'\". Either the 'unsafe-inline' keyword, a hash ('sha256-...'), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present.")
 
       } catch (error) {
         console.error("🛡️ CSP violation:", error);
